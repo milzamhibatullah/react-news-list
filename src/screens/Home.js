@@ -18,8 +18,9 @@ export  default class Home  extends Component{
   }
 
   componentDidMount(){
-    this.onRefresh();
+    this.onRefresh()
   }
+
   static navigationOptions =(navigation)=>({
     headerTitle:'News List',
     headerLeft : (
@@ -58,11 +59,15 @@ export  default class Home  extends Component{
 
   renderItem  =(item,index)=> {
     return(
-      <View style={{backgroundColor:'white',padding:20,marginBottom:2}}>
-          <Text>{item.title}</Text>
-      </View>
+      <TouchableOpacity style={{flex:1,backgroundColor:'white',flexDirection:'row',padding:20,marginBottom:2}}>
+          <Image source={{uri:item.urlToImage}} style={{width:60,height:60,marginEnd:12}}/>
+          <View style={{flex:1}}>
+          <Text style={{fontSize:16}}>{item.title}</Text>
+          </View>
+      </TouchableOpacity>
     )
   }
+  
   render(){
     console.log(this)
     return(
