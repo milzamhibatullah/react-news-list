@@ -7,6 +7,7 @@ import  {
   FlatList,
   Alert,
   RefreshControl,
+  WebView,
   TouchableOpacity
 } from  'react-native';
 
@@ -59,7 +60,8 @@ export  default class Home  extends Component{
 
   renderItem  =(item,index)=> {
     return(
-      <TouchableOpacity style={{flex:1,backgroundColor:'white',flexDirection:'row',padding:20,marginBottom:2}}>
+      <TouchableOpacity style={{flex:1,backgroundColor:'white',flexDirection:'row',padding:20,marginBottom:2}}
+        onPress={()=>this.props.navigation.navigate('ReadNews',{'title':item.title,'link':item.uri})}>
           <Image source={{uri:item.urlToImage}} style={{width:60,height:60,marginEnd:12}}/>
           <View style={{flex:1}}>
           <Text style={{fontSize:16}}>{item.title}</Text>
@@ -67,7 +69,7 @@ export  default class Home  extends Component{
       </TouchableOpacity>
     )
   }
-  
+
   render(){
     console.log(this)
     return(
